@@ -10,6 +10,7 @@ COL_SRC_BALANCE = 16
 COL_SRC_FXRATE = 15
 COL_SRC_VAT = 12
 COL_SRC_PAYOUTDATE = 4
+COL_SRC_COUNTRY = 20
 
 dateformat = '%Y-%m-%d'
 
@@ -42,6 +43,7 @@ def parsepayout(csvfile):
 			ta.fxrate = float(row[COL_SRC_FXRATE])
 		ta.vat = float(row[COL_SRC_VAT])
 		ta.payoutdate = datetime.strptime(row[COL_SRC_PAYOUTDATE], dateformat)
+		ta.country = row[COL_SRC_COUNTRY]
 		
 		if(tadic.has_key(ta.currency)):
 			talist = tadic[ta.currency]

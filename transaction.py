@@ -9,6 +9,7 @@ class Transaction:
 	fxrate = 0.00
 	vat = 0.00
 	payoutdate = 0
+	country = ""
 
 	def servicefee(self):
 		return self.fxrate * self.salesinclvat - self.balance

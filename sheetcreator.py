@@ -8,17 +8,19 @@ NumberFormat.FORMAT_CURRENCY_EUR = "[$" + u"\u20AC" + " ]#,##0.00_-"
 COL_DST_CHARGEDDATE = 0
 COL_DST_ORDERNO = 1
 COL_DST_CURRENCY = 2
-COL_DST_SALESINCLVAT = 3
-COL_DST_SALESEXCLVAT = 4
-COL_DST_SERVICEFEE = 5
-COL_DST_BALANCE = 6
-COL_DST_VAT = 7
-COL_DST_PAYOUTDATE = 8
+COL_DST_COUNTRY = 3
+COL_DST_SALESINCLVAT = 4
+COL_DST_SALESEXCLVAT = 5
+COL_DST_SERVICEFEE = 6
+COL_DST_BALANCE = 7
+COL_DST_VAT = 8
+COL_DST_PAYOUTDATE = 9
 
 header = {}
 header[COL_DST_CHARGEDDATE] = 'Charged date'
 header[COL_DST_ORDERNO] = 'Merchant order number'
 header[COL_DST_CURRENCY] = 'Currency'
+header[COL_DST_COUNTRY] = 'Country'
 header[COL_DST_SALESINCLVAT] = 'Sales incl. VAT'
 header[COL_DST_SALESEXCLVAT] = 'Sales excl. VAT'
 header[COL_DST_SERVICEFEE] = 'Google service fee in EUR'
@@ -47,6 +49,7 @@ def saveasworkbook(tadic, outputfilename):
 	sheet.column_dimensions[get_column_letter(COL_DST_CHARGEDDATE+1)].width = 12
 	sheet.column_dimensions[get_column_letter(COL_DST_ORDERNO+1)].width = 20
 	sheet.column_dimensions[get_column_letter(COL_DST_CURRENCY+1)].width = 9
+	sheet.column_dimensions[get_column_letter(COL_DST_COUNTRY+1)].width = 9
 	sheet.column_dimensions[get_column_letter(COL_DST_SALESINCLVAT+1)].width = 13
 	sheet.column_dimensions[get_column_letter(COL_DST_SALESEXCLVAT+1)].width = 13
 	sheet.column_dimensions[get_column_letter(COL_DST_SERVICEFEE+1)].width = 21
@@ -88,6 +91,10 @@ def creategroup(sheet, row, currency, talist):
 		sheet.cell(row=row, column=COL_DST_ORDERNO).value = ta.orderno
 		
 		sheet.cell(row=row, column=COL_DST_CURRENCY).value = ta.currency
+
+		sheet.cell(row=row, column=COL_DST_COUNTRY).style.number_format.format_code = NumberFormat.FORMAT_TEXT
+		sheet.cell(row=row, column=COL_DST_COUNTRY).value = ta.country
+
 		sheet.cell(row=row, column=COL_DST_SALESINCLVAT).value = ta.salesinclvat
 		sheet.cell(row=row, column=COL_DST_SALESEXCLVAT).value = ta.salesexclvat
 		
