@@ -29,7 +29,7 @@ def parsepayout(csvfile):
 
 	# Loop the csv rows and add the transactions into a dictionary, where currency is the key
 	for line in csvfile:
-		row = line.split(',')
+		row = line.replace("\n","").split(',')
 		ta = Transaction()
 		ta.chargeddate = datetime.strptime(row[COL_SRC_CHARGEDDATE], dateformat)
 		ta.orderno = row[COL_SRC_ORDERNO]
