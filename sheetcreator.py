@@ -105,7 +105,7 @@ def creategroup(sheet, row, currency, talist):
 		sheet.cell(row=row, column=COL_DST_BALANCE).value = ta.balance
 		
 		sheet.cell(row=row, column=COL_DST_VAT).style.number_format.format_code = NumberFormat.FORMAT_CURRENCY_EUR
-		sheet.cell(row=row, column=COL_DST_VAT).value = ta.vat
+		sheet.cell(row=row, column=COL_DST_VAT).value = ta.vat * ta.fxrate
 
 		sheet.cell(row=row, column=COL_DST_PAYOUTDATE).value = ta.payoutdate
 		row += 1
